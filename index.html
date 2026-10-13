@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Радмила — Таролог и Мастер практик</title>
+    <style>
+        :root {
+            --bg-color: #0d0d0d;
+            --card-bg: rgba(22, 22, 26, 0.95);
+            --gold: #d4af37;
+            --text-color: #e0e0e0;
+            --border-color: rgba(212, 175, 55, 0.3);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 20px 10px 120px 10px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            position: relative;
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 60px 20px;
+            min-height: 480px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            overflow: hidden;
+            background: #16161a;
+        }
+
+        .hero-bg-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+            z-index: 1;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(13, 13, 13, 0.65);
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            width: 100%;
+        }
+
+        h1 {
+            color: var(--gold);
+            font-size: 2.8rem;
+            margin-bottom: 8px;
+            font-family: 'Georgia', serif;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.9);
+        }
+
+        .subtitle {
+            font-style: italic;
+            color: #ffffff;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.9);
+        }
+
+        .phone {
+            font-size: 1.25rem;
+            margin-bottom: 25px;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.9);
+        }
+
+        /* GRID И КАРТОЧКИ */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+            align-items: center;
+        }
+
+        @media (min-width: 768px) {
+            .grid-2 {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .img-box {
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            background: #1a1a1a;
+        }
+
+        .img-box img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: cover;
+        }
+
+        .section-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+        }
+
+        h2 {
+            color: var(--gold);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            font-family: 'Georgia', serif;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        ul {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 12px;
+        }
+
+        li::before {
+            content: "✦";
+            color: var(--gold);
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        /* КНОПКИ */
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            color: #fff;
+            font-weight: bold;
+            padding: 14px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-telegram {
+            background: linear-gradient(135deg, #0088cc 0%, #005580 100%);
+            box-shadow: 0 4px 15px rgba(0, 136, 204, 0.4);
+        }
+
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            opacity: 0.95;
+        }
+
+        .highlight {
+            background: rgba(212, 175, 55, 0.1);
+            border-left: 3px solid var(--gold);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        /* ПЛАВАЮЩИЙ ВИДЖЕТ СВЯЗИ */
+        .social-widget {
+            position: fixed !important;
+            bottom: 20px !important;
+            right: 20px !important;
+            z-index: 99999 !important;
+            display: flex !important;
+            gap: 10px;
+            background: rgba(13, 13, 13, 0.9);
+            padding: 8px 12px;
+            border-radius: 40px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.8);
+        }
+
+        .social-widget .btn {
+            padding: 10px 18px;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- HERO SECTION -->
+    <header class="hero">
+        <img src="bg.jpg.jpg" alt="Фон Радмила" class="hero-bg-img">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Радмила</h1>
+            <p class="subtitle">Таролог, ясновидящая и мастер практик</p>
+            <p class="phone">+7 (928) 241-77-07</p>
+            <div class="btn-group">
+                <a href="https://wa.me/79282417707" class="btn btn-whatsapp" target="_blank">WhatsApp</a>
+                <a href="https://t.me/+79282417707" class="btn btn-telegram" target="_blank">Telegram</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- БЛОК 1: О СЕБЕ -->
+    <section class="section-card">
+        <div class="grid-2">
+            <div>
+                <h2>Здравствуйте! Меня зовут Радмила!</h2>
+                <p>Я не стану говорить, что я маг в сто десятом поколении! Ко мне обращаются люди, не первый год работаю, не фантазирую, не пугаю — всё по факту!</p>
+                <div class="highlight">
+                    <p><em>Смотрю на Таро, Оракулах, обычных игральных картах, а также делаю отливки Воском и Свинцом. Предоставляю Фото и Видео отчёт!</em></p>
+                </div>
+                <p>Я никогда не работаю «вслепую» — сначала важно понять, что именно происходит в Вашей жизни, какие энергии задействованы и какие пути решения открыты.</p>
+            </div>
+            <div class="img-box">
+                <img src="photo_2026-10-08_21-55-36.jpg" alt="Радмила — Таролог">
+            </div>
+        </div>
+    </section>
+
+    <!-- БЛОК 2: ДИАГНОСТИКА -->
+    <section class="section-card">
+        <div class="grid-2">
+            <div class="img-box">
+                <img src="photo_2026-10-08_21-54-16.jpg" alt="Процесс диагностики">
+            </div>
+            <div>
+                <h2>Диагностика</h2>
+                <p><strong>Для диагностики нужно прислать:</strong></p>
+                <ul>
+                    <li>Ваше имя</li>
+                    <li>Дата рождения</li>
+                    <li>Фотография</li>
+                </ul>
+
+                <p><strong>В Диагностике я смотрю:</strong></p>
+                <ul>
+                    <li>Общая Энергетика человека</li>
+                    <li>Энергетическая защита и её уязвимости</li>
+                    <li>Психоэмоциональный фон и блоки</li>
+                    <li>Состояние Финансового канала</li>
+                    <li>Выявление Негативных Магических воздействий</li>
+                    <li>Чакровый столб + Восковая Отливка</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- БЛОК 3: ОЧИЩЕНИЕ И ЗАЩИТА -->
+    <section class="section-card">
+        <div class="grid-2">
+            <div>
+                <h2>Очищение и Защита</h2>
+                <p>Если в вашей жизни появились внезапные конфликты, упадок сил, финансовые потери или рушатся отношения — нужно проверять энергетику.</p>
+                <div class="highlight">
+                    <p>Диагностика даёт понять, где корень проблемы! Если вижу негатив, работа идет в два этапа: <strong>ОЧИЩЕНИЕ И ЗАЩИТА</strong> (Воск, Свинец, Отжиги).</p>
+                </div>
+            </div>
+            <div class="img-box">
+                <img src="photo_2026-10-08_21-55-43.jpg" alt="Духовная работа">
+            </div>
+        </div>
+    </section>
+
+    <!-- БЛОК 4: ЛЮБОВНЫЕ РАСКЛАДЫ -->
+    <section class="section-card">
+        <div class="grid-2">
+            <div class="img-box">
+                <img src="photo_2026-10-08_21-54-29.jpg" alt="Любовные расклады">
+            </div>
+            <div>
+                <h2>Любовные Расклады</h2>
+                <ul>
+                    <li>Мысли, Чувства, Действия партнёра;</li>
+                    <li>Прогноз на будущее и развитие в паре;</li>
+                    <li>Причины разрыва или охлаждения;</li>
+                    <li>Помощь в восстановлении притяжения и близости.</li>
+                </ul>
+                <p><strong>Подход к ситуации ювелирный, и выход всегда есть!</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- БЛОК 5: ФИНАНСОВЫЙ КАНАЛ -->
+    <section class="section-card">
+        <h2>Финансовый Канал</h2>
+        <p>Если заработок даётся с трудом, деньги не удерживаются, а сделки срываются — причиной может быть заблокированный денежный канал.</p>
+        <div class="highlight">
+            <p>Чистка Чакр и Отжиги позволяют устранить застой и привлечь ресурсы!</p>
+        </div>
+        <div class="btn-group">
+            <a href="https://wa.me/79282417707" class="btn btn-whatsapp" target="_blank">Написать в WhatsApp</a>
+            <a href="https://t.me/+79282417707" class="btn btn-telegram" target="_blank">Написать в Telegram</a>
+        </div>
+    </section>
+
+</div>
+
+<!-- ФИКСИРОВАННЫЕ КНОПКИ СВЯЗИ -->
+<div class="social-widget">
+    <a href="https://wa.me/79282417707" class="btn btn-whatsapp" target="_blank">WhatsApp</a>
+    <a href="https://t.me/+79282417707" class="btn btn-telegram" target="_blank">Telegram</a>
+</div>
+
+</body>
+</html>
